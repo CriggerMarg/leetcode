@@ -58,5 +58,14 @@ namespace tests
         {
             Assert.AreEqual(expected, LeetEasy.IsPalindrome(input));
         }
+
+
+        [TestCase(123, 321)]
+        [TestCase(-123, -321)]
+        [TestCase(120, 21)]
+        public void Reverse(int input, int expected)
+        {
+            Assert.AreEqual(expected, LeetEasy.Reverse(input));
+        }
     }
 }

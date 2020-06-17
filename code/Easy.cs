@@ -148,5 +148,28 @@ namespace code
             return true;
 
         }
+        /// <summary>
+        /// https://leetcode.com/problems/reverse-integer/
+        /// </summary>
+        /// <param name="x"></param>
+        /// <returns></returns>
+        public static int Reverse(int x)
+        {
+            var rev = x.ToString().ToCharArray();
+            Array.Reverse(rev);
+            var rr = new string(rev);
+            if (rr.EndsWith("-"))
+            {
+                rr = rr.Remove(rr.Length - 1);
+                rr = rr.Insert(0, "-");
+            }
+
+            if (int.TryParse(rr, out var rez))
+            {
+                return rez;
+            }
+
+            return 0;
+        }
     }
 }
