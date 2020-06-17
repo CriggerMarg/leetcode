@@ -32,18 +32,7 @@ namespace tests
             Assert.AreEqual(expected, LeetMed.LengthOfLongestSubstring(input));
         }
 
-        private LeetMed.ListNode InitListNode(int[] numbers)
-        {
-            var head = new LeetMed.ListNode(numbers[0]);
-            var curr = head;
-            for (int i = 1; i < numbers.Length - 1; i++)
-            {
-                var next = new LeetMed.ListNode(numbers[i]);
-                curr = curr.next = next;
-            }
-
-            return head;
-        }
+    
 
         [TestCase(new[] { 2, 4, 3 }, new[] { 5, 6, 4 }, new[] { 7, 0, 8 })]
         [TestCase(new[] { 0 }, new[] { 1 }, new[] { 1 })]
@@ -51,9 +40,9 @@ namespace tests
         [TestCase(new[] { 9, 8 }, new[] { 1 }, new[] { 0, 9 })]
         public void AddTwoNumbers(int[] left, int[] right, int[] expected)
         {
-            var l1 = InitListNode(left);
-            var l2 = InitListNode(right);
-            var etalone = InitListNode(expected);
+            var l1 = tools.InitListNode(left);
+            var l2 = tools.InitListNode(right);
+            var etalone = tools.InitListNode(expected);
             var result = LeetMed.AddTwoNumbers(l1, l2);
             Assert.AreEqual(etalone, result);
         }

@@ -135,15 +135,15 @@ namespace code
             var s = x.ToString();
             var l = s.Length;
             for (int i = 0; i < l - 1; i++)
-            for (int j = l - 1; j > 0; j--)
-            {
-                if (s[i] != s[j])
+                for (int j = l - 1; j > 0; j--)
                 {
-                    return false;
-                }
+                    if (s[i] != s[j])
+                    {
+                        return false;
+                    }
 
-                i++;
-            }
+                    i++;
+                }
 
             return true;
 
@@ -182,12 +182,44 @@ namespace code
         {
 
             for (int a = 0; a < nums.Length - 1; a++)
-            for (int b = a + 1; b < nums.Length; b++)
-            {
-                if (nums[a] + nums[b] == target)
-                    return new int[2] { a, b };
-            }
+                for (int b = a + 1; b < nums.Length; b++)
+                {
+                    if (nums[a] + nums[b] == target)
+                        return new int[2] { a, b };
+                }
             return new int[2] { 0, 1 };
+        }
+
+        /// <summary>
+        /// https://leetcode.com/problems/middle-of-the-linked-list/
+        /// </summary>
+        /// <param name="head"></param>
+        /// <returns></returns>
+        public static ListNode MiddleNode(ListNode head)
+        {
+            if (head.next == null)
+            {
+                return head;
+            }
+
+            if (head.next.next == null)
+            {
+                return head.next;
+            }
+            var list = new List<ListNode>();
+            var current = head;
+            while (current.next != null)
+            {
+                list.Add(current);
+                current = current.next;
+            }
+
+            var length = list.Count;
+            if (length % 2 != 0)
+            {
+                return list[length / 2 + 1];
+            }
+            return list[length / 2];
         }
     }
 }

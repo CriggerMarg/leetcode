@@ -69,11 +69,19 @@ namespace tests
         }
 
         [TestCase(new[] { 2, 7, 11, 15 }, 9, new[] { 0, 1 })]
-        [TestCase(new[] { 3,2,4 }, 6, new[] { 1,2 })]
+        [TestCase(new[] { 3, 2, 4 }, 6, new[] { 1, 2 })]
 
         public void TwoSum(int[] input, int target, int[] expected)
         {
             Assert.AreEqual(expected, LeetEasy.TwoSum(input, target));
+        }
+
+        [TestCase(new[] { 1, 2, 3, 4, 5 }, new[] { 3, 4, 5 })]
+        public void MiddleNode(int[] input, int[] expected)
+        {
+            var list = tools.InitListNode(input);
+            var exp = tools.InitListNode(expected);
+            Assert.AreEqual(exp, LeetEasy.MiddleNode(list));
         }
     }
 }
