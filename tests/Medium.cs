@@ -19,5 +19,14 @@ namespace tests
         {
             Assert.AreEqual(expected, LeetMed.MaxArea(height));
         }
+
+
+        [TestCase("abcabcbb", 3)]
+        [TestCase("bbbbb", 1)]
+        [TestCase("pwwkew", 3)]
+        public void LengthOfLongestSubstring(string input, int expected)
+        {
+            Assert.AreEqual(expected, LeetMed.LengthOfLongestSubstring(input));
+        }
     }
 }
