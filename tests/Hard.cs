@@ -6,10 +6,6 @@ namespace tests
 {
     public class Hard
     {
-        [SetUp]
-        public void Setup()
-        {
-        }
         [TestCase(new int[0] , new[] { 1 }, 1)]
         [TestCase(new[] { 3 }, new[] { -2, -1 }, -1)]
         [TestCase(new[] { 1, 3, }, new[] { 2 }, 2.0)]
