@@ -49,5 +49,14 @@ namespace tests
         {
             Assert.AreEqual(expected, LeetEasy.RomanToInt(input));
         }
+
+
+        [TestCase(121, true)]
+        [TestCase(-121, false)]
+        [TestCase(10, false)]
+        public void IsPalindrome(int input, bool expected)
+        {
+            Assert.AreEqual(expected, LeetEasy.IsPalindrome(input));
+        }
     }
 }
