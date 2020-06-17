@@ -29,5 +29,12 @@ namespace tests
             Assert.AreEqual(expected, LeetEasy.IsValid(input));
         }
 
+
+        [TestCase(new[] {"flower", "flow", "flight"}, "fl")]
+        [TestCase(new[] { "dog", "racecar", "car" }, "")]
+        public void LongestCommonPrefix(string[] input, string expected)
+        {
+            Assert.AreEqual(expected,LeetEasy.LongestCommonPrefix(input));
+        }
     }
 }
