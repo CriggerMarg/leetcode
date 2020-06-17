@@ -19,8 +19,11 @@ namespace tests
         {
             Assert.AreEqual(expected, LeetMed.MaxArea(height));
         }
-
-
+        [TestCase(" ", 1)]
+        [TestCase("dvdf", 3)]
+        [TestCase("aab", 2)]
+        [TestCase("ohomm", 3)]
+        [TestCase("ohomm", 3)]
         [TestCase("abcabcbb", 3)]
         [TestCase("bbbbb", 1)]
         [TestCase("pwwkew", 3)]
