@@ -12,6 +12,11 @@ namespace tests
         {
         }
 
-       
+        [TestCase("1.1.1.1", "1[.]1[.]1[.]1")]
+        [TestCase("255.100.50.0", "255[.]100[.]50[.]0")]
+        public void DefangIPaddr(string input, string expected)
+        {
+            Assert.AreEqual(expected,input);
+        }
     }
 }
