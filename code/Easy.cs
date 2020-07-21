@@ -221,5 +221,62 @@ namespace code
             }
             return list[length / 2];
         }
+
+        /// <summary>
+        /// https://leetcode.com/problems/non-decreasing-array/
+        /// </summary>
+        /// <param name="nums"></param>
+        /// <returns></returns>
+        public static bool CheckPossibility(int[] nums)
+        {
+            if (nums.Length == 0)
+            {
+                return false;
+            }
+
+            int errorCount = 0;
+            var curr = nums[0];
+            for (int i = 1; i < nums.Length; i++)
+            {
+                if (curr > nums[i])
+                {
+                    errorCount++;
+                }
+                if (errorCount > 1)
+                {
+                    return false;
+                }
+
+                curr = nums[i];
+            }
+            return true;
+        }
+
+        /// <summary>
+        /// https://leetcode.com/problems/buddy-strings/
+        /// </summary>
+        public static bool BuddyStrings(string l, string r)
+        {
+            if (l.Length != r.Length) return false;
+
+            var left = l.ToCharArray();
+            var right = r.ToCharArray();
+
+            for (int i = 0; i < left.Length; i++)
+            {
+                var current = left[i];
+                for (int j = 0; j < left.Length; j++)
+                {
+                    var tmp = left[j];
+                    left[j] = current;
+                    if (left.ToString() == r)
+                    {
+                        return true;
+                    }
+                    left[j] = tmp;
+                }
+            }
+            return false;
+        }
     }
 }

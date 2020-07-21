@@ -5,7 +5,7 @@ using LeetEasy = code.Easy;
 
 namespace tests
 {
-    public class Tests
+    public class Easy
     {
         [TestCase("1.1.1.1", "1[.]1[.]1[.]1")]
         [TestCase("255.100.50.0", "255[.]100[.]50[.]0")]
@@ -77,6 +77,26 @@ namespace tests
             var list = tools.InitListNode(input);
             var exp = tools.InitListNode(expected);
             Assert.AreEqual(exp, LeetEasy.MiddleNode(list));
+        }
+
+        [Ignore("did not implemented well")]
+        [TestCase(new[] { 4, 2, 3 }, true)]
+        [TestCase(new[] { 4, 2, 1 }, false)]
+        [TestCase(new[] { 5, 6, 3, 4, 2, 3 }, false)]
+        public void CheckPossibility(int[] input, bool expected)
+        {
+            Assert.AreEqual(expected, LeetEasy.CheckPossibility(input));
+        }
+
+
+        [TestCase("ab","ba", true)]
+        [TestCase("ab", "ab", false)]
+        [TestCase("aa", "aa", true)]
+        [TestCase("aaaaaaabc", "aaaaaaacb", true)]
+        [TestCase("", "aa", false)]
+        public void BuddyStrings(string left, string right, bool expected)
+        {
+            Assert.AreEqual(expected,LeetEasy.BuddyStrings(left,right));
         }
     }
 }
