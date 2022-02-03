@@ -50,6 +50,13 @@ namespace tests
             Assert.Equal(expected, LeetMed.MaxArea(height));
         }
 
+        [Theory(DisplayName = "198. House Robber")]
+        [InlineData(new int[] { 1, 2, 3, 1 }, 4)]
+        [InlineData(new int[] { 2, 7, 9, 3, 1 }, 12)]
+        public void FirstBadVersion(int[] input, int output)
+        {
+            Assert.Equal(output, LeetMed.Rob(input));
+        }
 
         [Theory(DisplayName = "740. Delete and Earn")]
         [InlineData(new int[] { 3, 4, 2 }, 6)]
