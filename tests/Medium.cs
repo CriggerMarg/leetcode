@@ -49,5 +49,14 @@ namespace tests
         {
             Assert.Equal(expected, LeetMed.MaxArea(height));
         }
+
+
+        [Theory(DisplayName = "740. Delete and Earn")]
+        [InlineData(new int[] { 3, 4, 2 }, 6)]
+        [InlineData(new int[] { 2, 2, 3, 3, 3, 4 }, 9)]
+        public void DeleteAndEarn(int[] input, int output)
+        {
+            Assert.Equal(output, LeetMed.DeleteAndEarn(input));
+        }
     }
 }

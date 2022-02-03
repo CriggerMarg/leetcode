@@ -3,7 +3,7 @@ using System.Linq;
 
 namespace code
 {
-    public static class Hard
+    public static partial class Hard
     {
         /// <summary>
         /// 4. Median of Two Sorted Arrays
