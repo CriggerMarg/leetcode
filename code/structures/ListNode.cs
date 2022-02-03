@@ -1,4 +1,4 @@
-﻿namespace code
+﻿namespace code.structures
 {
     public class ListNode
     {
@@ -11,7 +11,7 @@
             return val.GetHashCode() ^ 31;
         }
 
-        public override bool Equals(object? obj)
+        public override bool Equals(object obj)
         {
             var other = obj as ListNode;
             if (other == null)

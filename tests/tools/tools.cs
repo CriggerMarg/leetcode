@@ -1,9 +1,8 @@
-﻿
-using code;
+﻿using code.structures;
 
 namespace tests
 {
-    static class tools
+    static class utils
     {
         public static ListNode InitListNode(int[] numbers)
         {

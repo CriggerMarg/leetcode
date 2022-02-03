@@ -1,32 +1,40 @@
-﻿using System;
+﻿using code.structures;
+using code.tools;
+using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 
 namespace code
 {
     public static class Medium
     {
         /// <summary>
-        /// https://leetcode.com/problems/container-with-most-water/
+        /// 2. Add Two Numbers 
+        /// https://leetcode.com/problems/add-two-numbers/
         /// </summary>
-        /// <param name="height"></param>
+        /// <param name="l1"></param>
+        /// <param name="l2"></param>
         /// <returns></returns>
-        public static int MaxArea(int[] height)
+        public static ListNode AddTwoNumbers(ListNode l1, ListNode l2)
         {
-            int maxarea = 0, l = 0, r = height.Length - 1;
-            while (l < r)
+            int[] l = l1.Flatten();
+            int[] r = l2.Flatten();
+
+            var arr = l.Sum(r);
+            Array.Reverse(arr);
+            var list = arr.ToList();
+            var current = new ListNode(list[0]);
+            var head = current;
+            for (var i = 1; i < list.Count; i++)
             {
-                maxarea = Math.Max(maxarea, Math.Min(height[l], height[r]) * (r - l));
-                if (height[l] < height[r])
-                    l++;
-                else
-                    r--;
+                current = current.next = new ListNode(list[i]);
             }
-            return maxarea;
+
+            return head;
         }
 
         /// <summary>
+        /// 3. Longest Substring Without Repeating Characters
         /// https://leetcode.com/problems/longest-substring-without-repeating-characters/
         /// </summary>
         /// <param name="s"></param>
@@ -69,100 +77,44 @@ namespace code
             return max;
         }
 
-        #region MyRegion
-
-       
-
-        private static int[] FlattenLinkedList(ListNode head)
+        /// <summary>
+        /// 7. Reverse Integer
+        /// https://leetcode.com/problems/reverse-integer/
+        /// </summary>
+        /// <param name="x"></param>
+        /// <returns></returns>
+        public static int Reverse(int x)
         {
-            if (head.next == null)
+            var rev = x.ToString().ToCharArray();
+            Array.Reverse(rev);
+            var rr = new string(rev);
+            if (rr.EndsWith("-"))
             {
-                return new[]
-                {
-                    head.val
-                };
+                rr = rr.Remove(rr.Length - 1);
+                rr = rr.Insert(0, "-");
             }
 
-
-            var list = new Stack<ListNode>();
-            var current = head;
-
-            do
-            {
-                list.Push(current);
-                current = current.next;
-            } while (current != null);
-
-
-            var rez = new int[list.Count];
-            int r = 0;
-            while (list.TryPop(out var node))
-            {
-                rez[r] = node.val;
-                r++;
-            }
-
-            return rez;
+            return int.TryParse(rr, out var rez) ? rez : 0;
         }
 
-        static int[] sumArrays(int[] left, int[] right)
+        /// <summary>
+        /// 11. Container With Most Water
+        /// https://leetcode.com/problems/container-with-most-water/
+        /// </summary>
+        /// <param name="height"></param>
+        /// <returns></returns>
+        public static int MaxArea(int[] height)
         {
-            var curr = left;
-            var other = right;
-            if (right.Length < left.Length)
+            int maxarea = 0, l = 0, r = height.Length - 1;
+            while (l < r)
             {
-                curr = right;
-                other = left;
+                maxarea = Math.Max(maxarea, Math.Min(height[l], height[r]) * (r - l));
+                if (height[l] < height[r])
+                    l++;
+                else
+                    r--;
             }
-
-            var newCurr = new int[other.Length];
-            Array.Copy(curr, 0, newCurr, other.Length - curr.Length, curr.Length);
-            bool addone = false;
-            for (int i = newCurr.Length - 1; i > -1; i--)
-            {
-                var val = other[i] + newCurr[i];
-                if (addone)
-                {
-                    val++;
-                    addone = false;
-                }
-                if (val >= 10)
-                {
-                    addone = true;
-                    val -= 10;
-                }
-                other[i] = val;
-            }
-
-
-            if (addone)
-            {
-                var ret = new int[other.Length + 1];
-                Array.Copy(other, 0, ret, 1, other.Length);
-                ret[0] = 1;
-                return ret;
-            }
-            return other;
+            return maxarea;
         }
-
-        public static ListNode AddTwoNumbers(ListNode l1, ListNode l2)
-        {
-            var l = FlattenLinkedList(l1);
-            var r = FlattenLinkedList(l2);
-
-            var arr = sumArrays(l, r);
-            Array.Reverse(arr);
-            var list = arr.ToList();
-            var current = new ListNode(list[0]);
-            var head = current;
-            for (var i = 1; i < list.Count; i++)
-            {
-                current = current.next = new ListNode(list[i]);
-            }
-
-            return head;
-        }
-
-        #endregion
     }
 }
