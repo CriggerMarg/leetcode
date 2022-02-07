@@ -65,5 +65,15 @@ namespace tests
         {
             Assert.Equal(output, LeetMed.DeleteAndEarn(input));
         }
+
+
+        [Theory(DisplayName = "1770. Maximum Score from Performing Multiplication Operations")]
+        [InlineData(new int[] { 1, 2, 3 }, new int[] { 3, 2, 1 }, 14)]
+        [InlineData(new int[] { -5, -3, -3, -2, 7, 1 }, new int[] { -10, -5, 3, 4, 6 }, 102)]
+        public void MaximumScore(int[] nums, int[] multipliers, int expected)
+        {
+            Assert.Equal(expected, LeetMed.MaximumScore(nums, multipliers));
+
+        }
     }
 }
